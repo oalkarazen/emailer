@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Link Example</title>
+</head>
+<body>
+    <a href="#" id="emailLink">Compose Email</a>
+
+    <script>
+        document.getElementById('emailLink').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+
+            // Define the email parameters
+            var email = 'example@example.com';
+            var subject = 'Your Subject Here';
+            var body = 'This is the body of the email.';
+
+            // Create the mailto link
+            var mailtoLink = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+            // Open the mailto link
+            window.location.href = mailtoLink;
+        });
+    </script>
+</body>
+</html>
