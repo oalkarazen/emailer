@@ -6,19 +6,32 @@
     <title>Email Link Example</title>
 </head>
 <body>
-    <a href="#" id="emailLink">Compose Email</a>
+    <h1>Compose Email</h1>
+    <form id="emailForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required><br><br>
+        
+        <label for="userEmail">Your Email Address:</label>
+        <input type="email" id="userEmail" name="userEmail" required><br><br>
+        
+        <button type="submit">Compose Email</button>
+    </form>
 
     <script>
-        document.getElementById('emailLink').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default link behavior
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the input values
+            var fullName = document.getElementById('fullName').value;
+            var userEmail = document.getElementById('userEmail').value;
 
             // Define the email parameters
-            var email = 'example@example.com';
+            var recipientEmail = 'example@example.com';
             var subject = 'Your Subject Here';
-            var body = 'This is the body of the email.';
+            var body = 'Full Name: ' + fullName + '\nEmail Address: ' + userEmail + '\n\nThis is the body of the email.';
 
             // Create the mailto link
-            var mailtoLink = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+            var mailtoLink = 'mailto:' + recipientEmail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
             // Open the mailto link
             window.location.href = mailtoLink;
